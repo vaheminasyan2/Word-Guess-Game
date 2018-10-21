@@ -1,0 +1,19 @@
+body {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+
+.gameplay-window {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border: 3px dashed #fff;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    min-height: 250px;
+}
+
+.status-bar {
+   text-align: center;
+}
