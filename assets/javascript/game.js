@@ -1,12 +1,13 @@
 function playGame() {
 
-// Create varialbles and placeholder to update data on display
+// Create varialbles and placeholder to update data on displayed on the screen
     var wordChoices = ["jump", "relax", "africa", "lady", "centerfold", "shout"];
     var wins = 0;
-    var remainingGuesses = 10;
-    var lettersGuessed = [];
+
+    var remainingGuesses;
+    var lettersGuessed;
     var currentWord;
-    var guessingWord = [];
+    var guessingWord;
     var userGuess; 
 
     var winsTag = document.getElementById ("wins-text");
@@ -16,23 +17,21 @@ function playGame() {
     var statusTag = document.getElementById ("status");
 
 //Create function to reset variables and placeholders' content
-    function reset () {
+
+//Create function to select a word among available choices
+    function selectWord() {
         remainingGuesses = 10;
         lettersGuessed = [];
         guessingWord = [];
         remainingGuessesTag.textContent = remainingGuesses;
         winsTag.textContent = wins;  
         lettersGuessedTag.textContent = lettersGuessed;
-    };
 
-//Create function to select a word among available choices
-    function selectWord() {
         currentWord = wordChoices[Math.floor(Math.random() * wordChoices.length)]; 
         for (var i = 0; i<currentWord.length; i++) {
             guessingWord [i]= " __ ";
         };
         currentWordTag.textContent = guessingWord.join("");
-        remainingGuessesTag.textContent = remainingGuesses;
         console.log(currentWord);
     };
 
@@ -44,12 +43,9 @@ function playGame() {
             if (event.keyCode >= 65 && event.keyCode <= 90) {
                 userGuess = event.key.toLowerCase();
 
-                if (lettersGuessed.includes(userGuess)){
-                    lettersGuessed.push();
-                    remainingGuesses = remainingGuesses + 0;
-                }
-                else {
-                    lettersGuessed.push(userGuess); remainingGuesses --;
+                if (!lettersGuessed.includes(userGuess)){
+                    lettersGuessed.push(userGuess); 
+                    remainingGuesses --;
                 }
                 lettersGuessedTag.textContent = lettersGuessed;
                 remainingGuessesTag.textContent = remainingGuesses; 
@@ -66,7 +62,6 @@ function playGame() {
                     statusTag.textContent = "Great Job! The word was: " + currentWord.toUpperCase() + ". Try new word.";
                     wins ++;
                     winsTag.textContent = wins;
-                    reset ();
                     selectWord();   
                 }
             }; 
@@ -74,7 +69,6 @@ function playGame() {
             function checkLost(){
                 if (remainingGuesses === 0 && guessingWord.includes(" __ ")) {
                     statusTag.textContent = "Try again!";
-                    reset ();
                     selectWord(); 
                 }
             }
