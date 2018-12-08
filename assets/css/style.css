@@ -1,9 +1,6 @@
 body {
     background: url("../images/map.jpeg");
-    
     font-size: 25px;
-
-   
 }
 
 .gameplay-window {
@@ -28,6 +25,12 @@ body {
     font-family: 'Elsie Swash Caps', cursive;
     color: rgb(65, 194, 26);
     font-size: 80px;
+}
+
+.countries {
+    font-family: 'Elsie Swash Caps', cursive;
+    color: rgb(239, 245, 237);
+    font-size: 65px;
 }
 
 #status {
